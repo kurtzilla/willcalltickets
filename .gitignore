@@ -17,6 +17,9 @@ coverage
 # API keys
 .env
 
+# Private notes
+.README_PRIVATE.md
+
 # Dependency directory
 node_modules
 bower_components
