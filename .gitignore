@@ -19,6 +19,7 @@ coverage
 
 # Private notes
 .README_PRIVATE.md
+.mynotes.md
 
 # Dependency directory
 node_modules
