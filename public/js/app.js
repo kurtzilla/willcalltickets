@@ -1,49 +1,50 @@
 (function() {
-angular.module('MyApp', ['ngRoute', 'satellizer'])
-  .config(function($routeProvider, $locationProvider, $authProvider) {
-    $locationProvider.html5Mode(true);
+angular.module('MyApp', ['ui.router', 'satellizer'])
+  .config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
+    $urlRouterProvider.otherwise('/');
 
-    $routeProvider
-      .when('/', {
-        templateUrl: 'partials/home.html'
-      })
-      .when('/contact', {
-        templateUrl: 'partials/contact.html',
-        controller: 'ContactCtrl'
-      })
-      .when('/login', {
-        templateUrl: 'partials/login.html',
-        controller: 'LoginCtrl',
-        resolve: { skipIfAuthenticated: skipIfAuthenticated }
-      })
-      .when('/signup', {
-        templateUrl: 'partials/signup.html',
-        controller: 'SignupCtrl',
-        resolve: { skipIfAuthenticated: skipIfAuthenticated }
-      })
-      .when('/account', {
-        templateUrl: 'partials/profile.html',
-        controller: 'ProfileCtrl',
-        resolve: { loginRequired: loginRequired }
-      })
-      .when('/forgot', {
-        templateUrl: 'partials/forgot.html',
-        controller: 'ForgotCtrl',
-        resolve: { skipIfAuthenticated: skipIfAuthenticated }
-      })
-      .when('/reset/:token', {
-        templateUrl: 'partials/reset.html',
-        controller: 'ResetCtrl',
-        resolve: { skipIfAuthenticated: skipIfAuthenticated }
-      })
-      .when('/api', {
-        templateUrl: 'partials/api.html',
-        controller: 'ResetCtrl'
-        // , resolve: { skipIfAuthenticated: skipIfAuthenticated }
-      })
-      .otherwise({
-        templateUrl: 'partials/404.html'
-      });
+    $stateProvider
+    .state('home', {
+      url: '/',
+      templateUrl: 'partials/home.html'
+    })
+    .state('contact', {
+      url: '/contact',
+      templateUrl: 'partials/contact.html',
+      controller: 'ContactCtrl'
+    })
+    .state('/login', {
+      templateUrl: 'partials/login.html',
+      controller: 'LoginCtrl',
+      resolve: { skipIfAuthenticated: skipIfAuthenticated }
+    })
+    .state('/signup', {
+      templateUrl: 'partials/signup.html',
+      controller: 'SignupCtrl',
+      resolve: { skipIfAuthenticated: skipIfAuthenticated }
+    })
+    .state('/account', {
+      templateUrl: 'partials/profile.html',
+      controller: 'ProfileCtrl',
+      resolve: { loginRequired: loginRequired }
+    })
+    .state('/forgot', {
+      templateUrl: 'partials/forgot.html',
+      controller: 'ForgotCtrl',
+      resolve: { skipIfAuthenticated: skipIfAuthenticated }
+    })
+    .state('/reset/:token', {
+      templateUrl: 'partials/reset.html',
+      controller: 'ResetCtrl',
+      resolve: { skipIfAuthenticated: skipIfAuthenticated }
+    })
+    .state('/api', {
+      templateUrl: 'partials/api.html',
+      controller: 'ResetCtrl'
+      // , resolve: { skipIfAuthenticated: skipIfAuthenticated }
+    });
+
+
 
     $authProvider.loginUrl = '/login';
     $authProvider.signupUrl = '/signup';
