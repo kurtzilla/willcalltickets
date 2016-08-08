@@ -49,7 +49,8 @@ angular.module('MyApp', ['ngRoute', 'satellizer'])
     $authProvider.signupUrl = '/signup';
     $authProvider.google({
       url: '/auth/google',
-      clientId: '631036554609-v5hm2amv4pvico3asfi97f54sc51ji4o.apps.googleusercontent.com'
+      clientId: '148490790374-le8vnobnfqhb3cogg7vhho7m7kpli4ak.apps.googleusercontent.com',
+      redirectUri: origin + '/auth/google/callback'
     });
 
     function skipIfAuthenticated($location, $auth) {
