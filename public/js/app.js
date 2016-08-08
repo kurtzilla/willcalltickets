@@ -1,6 +1,7 @@
 (function() {
 angular.module('MyApp', ['ui.router', 'satellizer'])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
+    $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
@@ -13,38 +14,47 @@ angular.module('MyApp', ['ui.router', 'satellizer'])
       templateUrl: 'partials/contact.html',
       controller: 'ContactCtrl'
     })
-    .state('/login', {
+    .state('login', {
+      url: '/login',
       templateUrl: 'partials/login.html',
       controller: 'LoginCtrl',
       resolve: { skipIfAuthenticated: skipIfAuthenticated }
     })
-    .state('/signup', {
+    .state('signup', {
+      url: '/signup',
       templateUrl: 'partials/signup.html',
       controller: 'SignupCtrl',
       resolve: { skipIfAuthenticated: skipIfAuthenticated }
     })
-    .state('/account', {
+    .state('account', {
+      url: '/account',
       templateUrl: 'partials/profile.html',
       controller: 'ProfileCtrl',
       resolve: { loginRequired: loginRequired }
     })
-    .state('/forgot', {
+    .state('forgot', {
+      url: '/forgot',
       templateUrl: 'partials/forgot.html',
       controller: 'ForgotCtrl',
       resolve: { skipIfAuthenticated: skipIfAuthenticated }
     })
-    .state('/reset/:token', {
+    .state('resetToken', {
+      url: '/reset/:token',
       templateUrl: 'partials/reset.html',
       controller: 'ResetCtrl',
       resolve: { skipIfAuthenticated: skipIfAuthenticated }
     })
-    .state('/api', {
+    .state('api', {
+      url: '/api',
       templateUrl: 'partials/api.html',
-      controller: 'ResetCtrl'
+      controller: 'ApiCtrl'
       // , resolve: { skipIfAuthenticated: skipIfAuthenticated }
     });
 
 
+    // TODO handle this by sharing config info!!!
+    // var isLocal = window.location.host.toLowerCase() === 'localhost:3000';
+    var origin = window.location.origin;
 
     $authProvider.loginUrl = '/login';
     $authProvider.signupUrl = '/signup';
