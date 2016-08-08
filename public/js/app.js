@@ -36,6 +36,11 @@ angular.module('MyApp', ['ngRoute', 'satellizer'])
         controller: 'ResetCtrl',
         resolve: { skipIfAuthenticated: skipIfAuthenticated }
       })
+      .when('/api', {
+        templateUrl: 'partials/api.html',
+        controller: 'ResetCtrl'
+        // , resolve: { skipIfAuthenticated: skipIfAuthenticated }
+      })
       .otherwise({
         templateUrl: 'partials/404.html'
       });

@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -5,14 +6,12 @@ var compression = require('compression');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
-var dotenv = require('dotenv');
+
 var jwt = require('jsonwebtoken');
 var moment = require('moment');
 var request = require('request');
 var sass = require('node-sass-middleware');
 
-// Load environment variables from .env file
-dotenv.load();
 
 // Models
 var User = require('./models/User');
@@ -20,6 +19,7 @@ var User = require('./models/User');
 // Controllers
 var userController = require('./controllers/user');
 var contactController = require('./controllers/contact');
+var apiController = require('./controllers/api');
 
 var app = express();
 
@@ -56,7 +56,10 @@ app.use(function(req, res, next) {
   }
 });
 
+// Contact
 app.post('/contact', contactController.contactPost);
+
+// User
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
 app.delete('/account', userController.ensureAuthenticated, userController.accountDelete);
 app.post('/signup', userController.signupPost);
@@ -66,6 +69,12 @@ app.post('/reset/:token', userController.resetPost);
 app.get('/unlink/:provider', userController.ensureAuthenticated, userController.unlink);
 app.post('/auth/google', userController.authGoogle);
 app.get('/auth/google/callback', userController.authGoogleCallback);
+
+// API
+app.post('/api', apiController.default);
+
+// Proxy Resource
+
 
 app.get('*', function(req, res) {
   res.redirect('/#' + req.originalUrl);

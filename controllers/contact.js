@@ -1,3 +1,4 @@
+require('dotenv').config();
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
   service: 'Mailgun',
@@ -34,7 +35,7 @@ exports.contactPost = function(req, res) {
 
   var mailOptions = {
     from: req.body.name + ' ' + '<'+ req.body.email + '>',
-    to: 'your@email.com',
+    to: process.env.EMAIL_CONTACT,
     subject: '✔ Contact Form | Mega Boilerplate',
     text: req.body.message
   };
