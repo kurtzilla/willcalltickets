@@ -20,6 +20,7 @@ var User = require('./models/User');
 var userController = require('./controllers/user');
 var contactController = require('./controllers/contact');
 var apiController = require('./controllers/api');
+var resourceController = require('./controllers/resource');
 
 var app = express();
 
@@ -74,7 +75,7 @@ app.get('/auth/google/callback', userController.authGoogleCallback);
 app.post('/api', apiController.default);
 
 // Proxy Resource
-
+app.get('/proxyresource/:resourceurl', resourceController.proxyResource);
 
 app.get('*', function(req, res) {
   res.redirect('/#' + req.originalUrl);
