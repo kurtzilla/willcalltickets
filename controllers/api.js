@@ -1,4 +1,7 @@
-require('dotenv').config();
+// require('dotenv').config();
+var dotenv = require('dotenv');
+dotenv.load();
+
 var knex = require('../db/knex');
 
 /**

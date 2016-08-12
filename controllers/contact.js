@@ -1,4 +1,7 @@
-require('dotenv').config();
+// require('dotenv').config();
+var dotenv = require('dotenv');
+dotenv.load();
+
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
   service: 'Mailgun',
