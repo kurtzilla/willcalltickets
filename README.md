@@ -1,7 +1,8 @@
 # My Boilerplate
 Created with Mega Boilerplate -- see below
 I just added a few customizations and some bug-fixes (mainly just one 
-bug related to heroku deployment - "dotenv.load()")
+bug related to heroku deployment - "dotenv.load()" - and I am still in 
+the process of testing this change from the original boilerplate)
 
 ### Instructions for use:
 Mainly - read the TODO.md file and follow the instructions there
