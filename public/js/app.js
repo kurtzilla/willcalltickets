@@ -60,8 +60,7 @@ angular.module('MyApp', ['ui.router', 'satellizer'])
     $authProvider.signupUrl = '/signup';
     $authProvider.google({
       url: '/auth/google',
-      // TODO add your clientid here
-      clientId: '',
+      clientId: '485087755085-79bj9q9chussumg4f5r7c6korhhpkert.apps.googleusercontent.com',
       redirectUri: origin + '/auth/google/callback'
     });
 

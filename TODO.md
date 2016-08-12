@@ -4,7 +4,7 @@ create a db
 #### Social auth
 I have included google plus for the initial setup
 Setup keys and secrets for social providers - see http://megaboilerplate.com
-    for more info and instructions
+    for more info and instructions. Also include origins for heroku
 =================================================
 Define a .env (be sure to add .env to .gitignore) with the following keys:
 NODE_ENV=[development]
@@ -31,7 +31,8 @@ create a heroku project and also populate these keys there
 add heroku postgres add on - this will generate a DATABASE_URL key automaticlly
 running the project at heroku will run migrations automatically - see 
     config/bookshelf.js to enable/disable #knex.migrate.latest();
-    
+DATABASE_URL=postgres://zkfembjvmuevyi:Z1aUrPiNDfA404j8QOCpCFNTD0@ec2-54-243-203-87.compute-1.amazonaws.com:5432/d3oo0sh6lci16d
+
 ===========================================
 
 Decide if you want to use bootstrap or material. Simply comment lines 
