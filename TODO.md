@@ -1,6 +1,11 @@
-# Steps to complete boilerplate
+## Steps to complete boilerplate
 create a db
 
+#### Social auth
+I have included google plus for the initial setup
+Setup keys and secrets for social providers - see http://megaboilerplate.com
+    for more info and instructions
+=================================================
 Define a .env (be sure to add .env to .gitignore) with the following keys:
 NODE_ENV=[development]
 DATABASE_URL=[your local db]
@@ -16,6 +21,11 @@ GOOGLE_CLIENT=[your google client id for the app]
 GOOGLE_SECRET=[your google app secret]
 
 ===========================================
+
+The google client id will also need to be inserted into the clientid in 
+    public/js/app.js. You will also need to do this for any other social 
+    providers
+=======================================================================
 
 create a heroku project and also populate these keys there
 add heroku postgres add on - this will generate a DATABASE_URL key automaticlly

@@ -4,6 +4,14 @@ I just added a few customizations and some bug-fixes (mainly just one
 bug related to heroku deployment - "dotenv.load()" - and I am still in 
 the process of testing this change from the original boilerplate)
 
+additions:
+ui-router
+knex connectivity
+ngMessages
+moment.js
+ng-Sanitize
+
+
 ### Instructions for use:
 Mainly - read the TODO.md file and follow the instructions there
 This is a work in progress to there may be unintended omissions
